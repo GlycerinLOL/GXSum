@@ -8,7 +8,7 @@ Code for the paper:
 
 > **The Continued Value of Classic Summarization Models: Boosting Performance with High-Quality References**
 > Ping-Yen Wu\*, Hsiao-Wei Chou\*, Kuan-Yu Chen
-> *IEEE/ACM Transactions on Audio, Speech, and Language Processing*, vol. 34, pp. 965–977, 2026.
+> *IEEE Transactions on Audio, Speech and Language Processing*, vol. 34, pp. 965–977, 2026.
 > DOI: [10.1109/TASLPRO.2026.3659424](https://doi.org/10.1109/TASLPRO.2026.3659424)
 
 \* Equal contribution.
@@ -120,7 +120,7 @@ that entry point.
 @article{wu2026gxsum,
   author  = {Wu, Ping-Yen and Chou, Hsiao-Wei and Chen, Kuan-Yu},
   title   = {The Continued Value of Classic Summarization Models: Boosting Performance with High-Quality References},
-  journal = {IEEE/ACM Transactions on Audio, Speech, and Language Processing},
+  journal = {IEEE Transactions on Audio, Speech and Language Processing},
   volume  = {34},
   pages   = {965--977},
   year    = {2026},
