@@ -1,0 +1,28 @@
+cff-version: 1.2.0
+message: "If you use this code or the GXSum dataset, please cite the paper below."
+title: "GXSum: code for 'The Continued Value of Classic Summarization Models'"
+authors:
+  - family-names: Wu
+    given-names: Ping-Yen
+  - family-names: Chou
+    given-names: Hsiao-Wei
+  - family-names: Chen
+    given-names: Kuan-Yu
+repository-code: "https://github.com/GlycerinLOL/GXSum"
+license: Apache-2.0
+preferred-citation:
+  type: article
+  title: "The Continued Value of Classic Summarization Models: Boosting Performance with High-Quality References"
+  authors:
+    - family-names: Wu
+      given-names: Ping-Yen
+    - family-names: Chou
+      given-names: Hsiao-Wei
+    - family-names: Chen
+      given-names: Kuan-Yu
+  journal: "IEEE/ACM Transactions on Audio, Speech, and Language Processing"
+  volume: 34
+  start: 965
+  end: 977
+  year: 2026
+  doi: "10.1109/TASLPRO.2026.3659424"

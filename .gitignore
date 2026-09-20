@@ -1,0 +1,24 @@
+# Model checkpoints and datasets — hosted on HuggingFace, see README
+Models/
+datasets/
+xsum/
+mturk/
+
+# Experiment tracking
+wandb/
+
+# Generated outputs
+Model_generated_content/
+test_result/
+
+# Environment
+.env
+__pycache__/
+*.pyc
+
+# Editor / notebooks
+.vscode/
+.ipynb_checkpoints/
+
+# OMC harness state
+.omc/
