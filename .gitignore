@@ -22,3 +22,6 @@ __pycache__/
 
 # OMC harness state
 .omc/
+
+# Paper PDF (IEEE copyright; kept locally as job-search evidence, not distributed)
+*.pdf
