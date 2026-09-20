@@ -13,6 +13,8 @@ Code for the paper:
 
 \* Equal contribution.
 
+Classic summarization models trained on GPT-4-Turbo references instead of the human ones reach GPT-4-level quality in human evaluation. GXSum is that reference set; this repo is the code that built and evaluated it.
+
 _Data and checkpoints are on HuggingFace, not in this repo · the `*_by_gpt.py` scripts need an OpenAI key · everything else runs on CPU._
 
 ## Data: GXSum
@@ -132,4 +134,4 @@ Code: [Apache-2.0](LICENSE). Data: see the [GXSum dataset card](https://huggingf
 
 ## Contact
 
-Ping-Yen Wu — brian.92308@gmail.com
+Bugs and questions: open an issue. Anything else: Ping-Yen Wu, brian.92308@gmail.com.
