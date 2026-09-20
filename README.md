@@ -13,18 +13,13 @@ Code for the paper:
 
 \* Equal contribution.
 
-## Overview
-
-The paper asks whether the summarization gap between classic encoder-decoder models and frontier LLMs is a matter of architecture or of supervision quality. The evidence points to the latter. Retraining BART, PEGASUS and BRIO on GPT-4-Turbo-generated references makes them competitive with the LLM that produced those references, and on XSum crowd-sourced human evaluation they are preferred over it — at three orders of magnitude fewer parameters.
-
-This repository holds the code: reference generation, the LLM judge, training and evaluation, and the analysis notebooks. The data and trained models are on HuggingFace.
+_Data and checkpoints are on HuggingFace, not in this repo · the `*_by_gpt.py` scripts need an OpenAI key · everything else runs on CPU._
 
 ## Data: GXSum
 
-GXSum ships **`id` + `summary` only** — the source articles are BBC content and are not
-redistributed. `id` is the BBC article id used by the public
-[`EdinburghNLP/xsum`](https://huggingface.co/datasets/EdinburghNLP/xsum), so attaching the
-document is one join. `load_gxsum.py` does it:
+GXSum ships `id` + `summary`. The articles are BBC content, so they stay in
+[`EdinburghNLP/xsum`](https://huggingface.co/datasets/EdinburghNLP/xsum) and `load_gxsum.py` joins
+them back in by id:
 
 ```python
 from load_gxsum import load_gxsum
@@ -34,7 +29,7 @@ ds = load_gxsum("medium")   # 50k train
 ds = load_gxsum("large")    # 90k train
 ```
 
-Rows come back as `{"id", "document", "summary"}`. Both datasets are public; no token is needed.
+Rows come back as `{"id", "document", "summary"}`.
 
 | Config | Train | Validation | Test |
 | --- | ---: | ---: | ---: |
@@ -42,11 +37,11 @@ Rows come back as `{"id", "document", "summary"}`. Both datasets are public; no 
 | `medium` | 49,962 | 2,748 | 11,324 |
 | `large` | 90,532 | 5,494 | 11,324 |
 
-Summaries were generated with `gpt-4-1106-preview` at temperature 0, with a soft length constraint of ±5 tokens around the human reference length and a hard upper bound through `max_tokens`. Every summary passed an automated validation query before being accepted. See the [dataset card](https://huggingface.co/datasets/GlycerinLOL/GXSum) for the full description and license.
+How the summaries were generated, and the license, are on the [dataset card](https://huggingface.co/datasets/GlycerinLOL/GXSum).
 
 ## Released checkpoints
 
-Fine-tuned on GXSum. The `base_model` column is what each was initialised from, read from its model card.
+Fine-tuned on GXSum. `base_model` is taken from each model card.
 
 | Checkpoint | Base model | GXSum config |
 | --- | --- | --- |
@@ -63,7 +58,7 @@ More variants are listed under [GlycerinLOL](https://huggingface.co/GlycerinLOL)
 
 ## Quick start
 
-Runs on CPU, needs no API key, and touches only public assets. Run it from the repo root so `load_gxsum` is importable.
+Runs on CPU without an API key. Run from the repo root so `load_gxsum` imports.
 
 ```bash
 pip install -r requirements.txt
@@ -112,9 +107,10 @@ CI runs both on every push and pull request.
 
 ## Notes
 
-- **`openai` is pinned to 0.28.** The generation and judge scripts use the legacy pre-1.0 global-client API. Do not upgrade without porting those three scripts.
-- **`run_summarization.py` requires `transformers>=4.37.0.dev0`**, while `requirements.txt` pins `4.36.0` for the fine-tuning scripts. Install a newer `transformers` if you need that entry point.
-- Model checkpoints, generated predictions, and judge outputs are not tracked in this repository.
+`openai` is pinned to 0.28 because the three `*_by_gpt.py` scripts use the pre-1.0 global-client
+API; port them before upgrading. `run_summarization.py` wants `transformers>=4.37` while
+`requirements.txt` pins 4.36 for `fine-tune.py` — install a newer `transformers` if you need
+that entry point.
 
 ## Citation
 
@@ -130,12 +126,10 @@ CI runs both on every push and pull request.
 }
 ```
 
-GitHub also offers a "Cite this repository" button from [`CITATION.cff`](CITATION.cff).
-
 ## License
 
 Code: [Apache-2.0](LICENSE). Data: see the [GXSum dataset card](https://huggingface.co/datasets/GlycerinLOL/GXSum#licensing-information).
 
 ## Contact
 
-Ping-Yen Wu — brian.92308@gmail.com, or open an issue.
+Ping-Yen Wu — brian.92308@gmail.com
